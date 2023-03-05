@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "48965515062",
+    "project_id": "regie-pub",
+    "storage_bucket": "regie-pub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48965515062:android:b4405ebd8db9db7ac22597",
+        "android_client_info": {
+          "package_name": "com.regie.pub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48965515062-b99hnfvdmrl97jv9rjslsuobjl6ql1b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDqvX62z_DYxMw8dyAgo4uEJVcOnoU6qE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48965515062-b99hnfvdmrl97jv9rjslsuobjl6ql1b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

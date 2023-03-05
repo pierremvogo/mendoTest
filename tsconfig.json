@@ -1,6 +1,11 @@
 {
   "extends": "expo/tsconfig.base.json",
   "compilerOptions": {
+    "tsx": "react",
+    "tsx": "react",
+    "tsx": "react",
+    "tsx": "react",
+    "tsx": "react",
     "strict": true,
     "paths": {
       "@ui/*": ["./src/ui/*"],
