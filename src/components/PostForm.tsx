@@ -11,6 +11,7 @@ function PostForm(){
     const [image, setImage] = useState({});
     const [status, setStatus] =  useState("")
     const [imageUrl, setImageUrl] = useState("../img/ic6.png");
+    const [path, setPath] = useState("");
     const [isloading, setIsLoading] = useState(false);
    
     const chooseImage = async () => {
@@ -35,6 +36,9 @@ function PostForm(){
 
              try{
                 await ref;
+                ref.then((response)=>{
+                    setPath(response.metadata.fullPath);
+                });
              }catch(e){console.log(e)}
              setIsLoading(false);
              Alert.alert("UPLOADED ");
@@ -43,18 +47,18 @@ function PostForm(){
     }
     
     const handleChange = (e: any) =>{
-        const value = e.currentTarget.value
+        const value = e.target.value
         setPostData({message: value})
         console.log(postData)
     }
     
      const handlePost = (message: any) => {
         setIsLoading(true);
-        firebase.firestore() 
-            .collection("users")
-            .doc()
-            .set({message: message}, );
         uploadImage();
+        firebase.firestore() 
+            .collection("posts")
+            .doc()
+            .set({message: postData["message"], imageUrl:path});
         setIsLoading(false);
      }
         return(
@@ -64,7 +68,8 @@ function PostForm(){
                             <TextInput underlineColorAndroid = "transparent"
                                 placeholderTextColor = "#9a73ef"
                                 autoCapitalize = "none"
-                                onChangeText = {handleChange} 
+                                onChangeText = {(message) => setPostData(message)} 
+                                value={postData["message"]}
                                 placeholder="Eccrire un Post"/>
                         </View>
                         <View>
@@ -75,7 +80,7 @@ function PostForm(){
                     </View>
 
                     <View style={styles.mainImage}>
-                       {isloading?<Skeleton circle />: <Image style={styles.image1} source={{uri: image.uri}} ></Image>}
+                       <Image style={styles.image1} source={{uri: image.uri}} />
                     </View>
                     
                     <TouchableOpacity 

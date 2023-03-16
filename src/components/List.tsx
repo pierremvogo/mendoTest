@@ -7,29 +7,13 @@ import PostConfig from './PostConfig'
 import {firebase} from '../../firebase-config';
 
 
-function Listview(){
- const [uri, setUri] = useState();
- const [messagepost, setMessagePost] = useState("")
-
- useEffect(() => {
-    firebase.firestore().collection("pubImage")
-      .onSnapshot((docs) => {
-        const source = docs.metadata.hasPendingWrites ? "Local" : "Server";
-        console.log(source);
-        docs.forEach((doc)=>{
-          doc.data()
-          setUri(doc.data());
-        })
-        
-      });
-  });
-
+function Listview({message, imageUrl}){
   const Separator = () => <View style={styles.separator} />;
     return (
     <View style={styles.container}>
         <View style={styles.image}>
             <View style={styles.imgpost}>
-              <Image style={styles.image} source={{uri: uri}}></Image>
+              <Image style={styles.image} source={{uri: imageUrl}}></Image>
             </View>
             <View style={styles.config}>
                <PostConfig />
@@ -42,7 +26,7 @@ function Listview(){
         <View style={{width: 400, margin: 2,}}>
              <ScrollView>
                 <Text style={{color: "black", textAlign: 'justify'}}>
-                  {messagepost}
+                  {message}
                 </Text>
             </ScrollView>
         </View>

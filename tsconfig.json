@@ -1,12 +1,14 @@
 {
   "extends": "expo/tsconfig.base.json",
   "compilerOptions": {
-    "tsx": "react",
-    "tsx": "react",
-    "tsx": "react",
-    "tsx": "react",
-    "tsx": "react",
+    "jsx": "react-native",
     "strict": true,
+    "moduleResolution": "Node",
+    "noImplicitAny": false,
+    "module": "esnext",
+    "target": "esnext",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
       "@ui/*": ["./src/ui/*"],
       "@core/*": ["./src/core/*"],

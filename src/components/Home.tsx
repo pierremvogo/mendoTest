@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, Dimensions} from 'react-native'
-
+import {firebase} from '../../firebase-config';
 import PostForm from './PostForm'
 import Listview from './List'
 import {
@@ -9,18 +9,30 @@ import {
   } from 'react-native';
 
 function Home() {
+ const [dataPost, setDataPost] = useState([]);
+
+    const listItems = firebase.firestore().collection("posts")
+          .onSnapshot((docs) => {
+              console.log(docs);
+              docs.forEach((elt) => {
+                return(
+                <View>
+                  <Listview message={elt.data().message} imageUrl={elt.data().imageUrl}/>
+                </View>)
+          })
+          
+        });
+  
+    
+   
+  
     const Separator = () => <View style={styles.separator} />;
     return( 
             <View style={styles.maincontent}>
                 <PostForm />
                 <Separator />
                 <ScrollView>
-                    <Listview />
-                    <Listview />
-                    <Listview />
-                    <Listview />
-                    <Listview />
-                    <Listview />
+                   {listItems}
                 </ScrollView>
                 
             </View>
