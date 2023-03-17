@@ -1,51 +1,87 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { HeaderMsgBar } from './src/components/Header_app_msg';
 import FontAweSome5Icon from "react-native-vector-icons/FontAwesome5";
 import { Color } from './src/components/constances/Color';
 import { Sizes } from './src/components/constances/Size';
+import {NavigationContainer} from '@react-navigation/native';
+import { ListMsgView } from './src/components/ListMsgView';
 
 export default function App() {
+  const [isGroup, setIsGroup] = useState(false);
+  const [isCollab, setIsCollab] = useState(false);
+  
+  useEffect(()=>{
+    setIsCollab(true);
+  },[])
+
   const navigateToSearch = () => {
 
+  }
+  const setStyle = ()=>{
+    return {
+      margin: 20,
+      padding: 15,
+      width: "100%",
+      backgroundColor: '#F2F2F2',
+      alignItems: "center"
+    }
+  }
+  const setColor = ()=>{
+    return{
+        color: Color.GREEN
+    }
+  }
+  const switchBtn = (id) => {
+    if(id=="C"){
+      setIsCollab(true);
+      setIsGroup(false);
+    }else{
+      setIsGroup(true);
+      setIsCollab(false);
+    }
   }
   return (  
     <SafeAreaView> 
       <HeaderMsgBar />
       <View style={styles.mainContent}>
-          <View style={{ flex: 2}}>
-              <TouchableOpacity style={styles.button} onPress={navigateToSearch}>
-                <FontAweSome5Icon           
-                  name="search"
-                  color={Color.SEARCH_ICON}
-                  size={18}
-                />
-                <Text style={styles.button_text} numberOfLines={1}>
-                  Rechercher quelque chose
-                </Text>
-              </TouchableOpacity>
-              <View style={{width: "10%", backgroundColor: "red"}}>
-                <TouchableOpacity>
+          <View style={{ flexDirection: "row", marginTop: 5 }}>
+              <View style={{width: "84%", marginLeft: 5}}>
+                <TouchableOpacity style={styles.button} onPress={navigateToSearch}>
+                  <FontAweSome5Icon           
+                    name="search"
+                    color={Color.SEARCH_ICON}
+                    size={18}
+                  />
+                  <Text style={styles.button_text} numberOfLines={1}>
+                    Rechercher quelque chose
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{width: "16%", padding: 12}}>
+                <TouchableOpacity >
                   <FontAweSome5Icon
-                      name="search"
-                      color={Color.SEARCH_ICON}
-                      size={28}
+                      name="sort-amount-down"
+                      color={"#7E7E7E"}
+                      size={18}
                   />
                 </TouchableOpacity>
               </View>
           </View>
-          <View style={{flexDirection: "row", marginLeft: 15, marginTop: 50}}>
+          <View style={{flexDirection: "row", marginLeft: 5, marginTop: 2}}>
             <View>
-              <TouchableOpacity style={styles.btn1}>
-                 <Text style={{color: Color.GREEN}}>Collaborateurs</Text>
+              <TouchableOpacity   style={isCollab?setStyle():styles.btn1} onPress={() => switchBtn("C")}>
+                 <Text style={{color: isCollab?Color.GREEN:Color.BLACK}}>Collaborateurs</Text>
               </TouchableOpacity>
             </View>
             <View>
-              <TouchableOpacity style={styles.btn2}>
-                <Text style={{color: Color.BLACK}}>Groupes</Text>
+              <TouchableOpacity style={isGroup?setStyle():styles.btn2} onPress={() => switchBtn("")}>
+                <Text style={{color: isGroup?Color.GREEN:Color.BLACK}}>Groupes</Text>
               </TouchableOpacity>
-              
             </View>
+          </View>
+          <View>
+            <ListMsgView typeMSG={isGroup? 'GROUP':'COLAB'} />
           </View>
       </View>
     </SafeAreaView>
@@ -58,22 +94,23 @@ const styles = StyleSheet.create({
    flexDirection: 'column',
   },
   btn1:{
-    backgroundColor: '#F2F2F2',
     margin: 20,
-    padding: 15
+    padding: 15,
+    width: "100%",
+    alignItems: "center",
   },
   btn2:{
-    backgroundColor: '#F2F2F2',
     margin: 20,
-    padding: 15
+    padding: 15,
+    width: "100%",
+    alignItems: "center"
   },
   button: {
     backgroundColor: Color.INPUT_BACKGROUND,
     height: 46,
-    width: "80%",
+    width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    paddingLeft: 20,
     justifyContent: "center",
     borderRadius: Sizes.INPUT_RADIUS,
     position: "relative",

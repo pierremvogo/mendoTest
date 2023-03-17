@@ -5,8 +5,7 @@ enum Color{
     INPUT_BACKGROUND = "#F2F2F2",
     PROFILE_ICON_BORDER = "#DEDEDE",
     INPUT_ICON = "#A7A7A7",
-    BLACK = "#1D1D1D",
-    SORT = "#7E7E7E"
+    BLACK = "#1D1D1D"
 }
 
 export { Color }
