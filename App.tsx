@@ -4,6 +4,8 @@ import { HeaderMsgBar } from './src/components/Header_app_msg';
 import FontAweSome5Icon from "react-native-vector-icons/FontAwesome5";
 import { Color } from './src/components/constances/Color';
 import { Sizes } from './src/components/constances/Size';
+import { NewMessage } from './src/message/NewMessage';
+import { ProfilMessenger } from './src/message';
 
 export default function App() {
   const navigateToSearch = () => {
@@ -11,43 +13,8 @@ export default function App() {
   }
   return (  
     <SafeAreaView> 
-      <HeaderMsgBar />
-      <View style={styles.mainContent}>
-          <View style={{ flex: 2}}>
-              <TouchableOpacity style={styles.button} onPress={navigateToSearch}>
-                <FontAweSome5Icon           
-                  name="search"
-                  color={Color.SEARCH_ICON}
-                  size={18}
-                />
-                <Text style={styles.button_text} numberOfLines={1}>
-                  Rechercher quelque chose
-                </Text>
-              </TouchableOpacity>
-              <View style={{width: "10%", backgroundColor: "red"}}>
-                <TouchableOpacity>
-                  <FontAweSome5Icon
-                      name="search"
-                      color={Color.SEARCH_ICON}
-                      size={28}
-                  />
-                </TouchableOpacity>
-              </View>
-          </View>
-          <View style={{flexDirection: "row", marginLeft: 15, marginTop: 50}}>
-            <View>
-              <TouchableOpacity style={styles.btn1}>
-                 <Text style={{color: Color.GREEN}}>Collaborateurs</Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity style={styles.btn2}>
-                <Text style={{color: Color.BLACK}}>Groupes</Text>
-              </TouchableOpacity>
-              
-            </View>
-          </View>
-      </View>
+      <ProfilMessenger />
+      
     </SafeAreaView>
     
   );
