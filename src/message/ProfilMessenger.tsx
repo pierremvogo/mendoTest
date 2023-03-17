@@ -18,18 +18,21 @@ export const ProfilMessenger: React.FunctionComponent<ProfilMessengerProps> = ({
             <Text style={styles.textDescription}>@john_johnson</Text>
        </View>
        <View style={{flexDirection:"row"}}>
+        <TouchableOpacity>
             <View style={styles.container1}>
-        <View style={{paddingLeft:20}}>
-             <FontAweSome5Icon
-              name="comment"
-              color={Color.INPUT_ICON}
-              size={20}
-            />
-        </View>
-        <Text style={styles.textTitre}>Message</Text>
-        </View>
-
-       <View style={styles.container1}>
+                    <View style={{paddingLeft:20}}>
+                        <FontAweSome5Icon
+                        name="comment"
+                        color={Color.INPUT_ICON}
+                        size={20}
+                        />
+                    </View>
+             <Text style={styles.textTitre}>Message</Text>
+            </View>
+        </TouchableOpacity>
+            
+       <TouchableOpacity>
+            <View style={styles.container1}>
             <View style={{paddingLeft:10}}>
                 <FontAweSome5Icon
                 name="info"
@@ -39,33 +42,41 @@ export const ProfilMessenger: React.FunctionComponent<ProfilMessengerProps> = ({
             </View>
         
             <Text style={styles.textTitre}>Profil</Text>
-        
        </View> 
+       </TouchableOpacity>
+       
+       
        <View style={{flexDirection:"row"}}>
-         <View style={styles.container1}>
-        <View style={{paddingLeft:10}}>
-             <FontAweSome5Icon
-              name="bell"
-              color={Color.INPUT_ICON}
-              size={20}
-            />
-        </View>
-        <Text style={styles.textTitre}>Mute</Text>
+        <TouchableOpacity>
+        <View style={styles.container1}>
+            <View style={{paddingLeft:10}}>
+                <FontAweSome5Icon
+                name="bell"
+                color={Color.INPUT_ICON}
+                size={20}
+                />
+            </View>
+            <Text style={styles.textTitre}>Mute</Text>
        </View>
-
-       <View style={styles.container1}>
-        <View style={{paddingLeft:10}}>
-             <FontAweSome5Icon
-              name="share"
-              color={Color.INPUT_ICON}
-              size={20}
-            />
-        </View>
+        </TouchableOpacity>
         
-        <Text style={styles.textTitre}>Partager</Text>
-        
-       </View> 
+        <TouchableOpacity>
+            <View style={styles.container1}>
+            <View style={{paddingLeft:10}}>
+                <FontAweSome5Icon
+                name="share"
+                color={Color.INPUT_ICON}
+                size={20}
+                />
+            </View>
+            
+            <Text style={styles.textTitre}>Partager</Text>
+            
+        </View> 
+        </TouchableOpacity>
 
+        <TouchableOpacity>
+            
        <View style={styles.container1}>
         <View style={{paddingLeft:20}}>
              <FontAweSome5Icon
@@ -78,6 +89,8 @@ export const ProfilMessenger: React.FunctionComponent<ProfilMessengerProps> = ({
         <Text style={styles.textTitre}>Collaborer</Text>
         
        </View> 
+        </TouchableOpacity>
+
      </View>
      </View>
     <View style={{flexDirection:"row"}}>
